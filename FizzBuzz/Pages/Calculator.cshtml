@@ -1,0 +1,53 @@
+﻿@page
+@model CalculatorModel
+@{
+    ViewData["Title"] = "Calculator";
+}
+
+<h2>Calculator</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Input</th>
+            <th>Output</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < 9; i++)
+        {
+            <tr>
+                <td><input type="text" class="input" data-index="@i" /></td>
+                <td><span class="output" data-index="@i"></span></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const inputs = document.querySelectorAll('.input');
+
+            inputs.forEach(input => {
+                input.addEventListener('input', function () {
+                    const index = this.getAttribute('data-index');
+                    const value = this.value;
+
+                    fetch('/Calculator/Calculate', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ input: value })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.querySelector(`.output[data-index="${index}"]`).innerText = data.result;
+                    })
+                    .catch(error => console.error('Error:', error));
+                });
+            });
+        });
+    </script>
+}

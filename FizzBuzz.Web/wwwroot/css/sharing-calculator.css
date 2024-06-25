@@ -1,0 +1,23 @@
+﻿body {
+}
+
+.form-container {
+    text-align: center;
+    border: 1px solid black;
+    padding: 20px;
+    margin: 0 auto; /* Center the form horizontally */
+    max-width: 500px; /* Optional: Set a max-width to control form width */
+}
+
+.sports-theme-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
