@@ -1,0 +1,33 @@
+﻿@model FizzBuzz.Web.Models.SharingModel
+
+@{
+    ViewData["Title"] = "Sharing Calculator";
+}
+
+<h2>Sharing Calculator</h2>
+
+<form asp-action="SharingCalculator" method="post" class="form-container">
+    <div>
+        <label for="Name">Who is Playing?</label>
+        <input asp-for="Name" maxlength="20" style="border: 1px solid black; padding: 10px;" />
+    </div>
+    <div>
+        <label for="Share">What Do You Want To Share?</label>
+        <input asp-for="Share" maxlength="10" style="border: 1px solid black; padding: 10px;" />
+    </div>
+    <div>
+        <button type="submit" class="sports-theme-button">Let's See What We Have</button>
+    </div>
+</form>
+
+@if (ViewBag.Result != null)
+{
+    <div>
+        <h3>@ViewBag.Result</h3>
+    </div>
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/sports-theme.css" />
+    <link rel="stylesheet" href="~/css/sharing-calculator.css" />
+}
